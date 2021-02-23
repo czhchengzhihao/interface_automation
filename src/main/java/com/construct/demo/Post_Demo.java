@@ -1,7 +1,6 @@
 package com.construct.demo;
 
 import com.construct.parameterized.Read_Parameter;
-import com.construct.util.ExcelUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -21,7 +20,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class Post_Demo {
@@ -65,8 +64,9 @@ public class Post_Demo {
 
 
     @Test(description = "登录", dataProvider = "login", dataProviderClass = Read_Parameter.class)
-    public void test_2(String account, String password) throws UnsupportedEncodingException {
-        log.info("账号："+account+";"+"密码："+password);
+    public void test_2(String describe,String account, String password) throws UnsupportedEncodingException {
+        log.info("描述："+describe+"账号："+account+";"+"密码："+password);
+        Reporter.log("描述："+describe+";账号："+account+";密码："+password);
         //声名post方法，获取测试url
         HttpPost post = new HttpPost("http://www.lemonban.com/user/ajax/login");
         //声名client对象，来执行请求
