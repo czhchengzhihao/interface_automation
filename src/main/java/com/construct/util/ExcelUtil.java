@@ -17,9 +17,9 @@ public class ExcelUtil {
      * @param endRow    结束行(行号非下标索引)
      * @param startCell 开始列(列号非下标索引)
      * @param endCell   结束列(列号非下标索引)
-     * @return
+     * @return 读取到的excel数据
      */
-    public static Object[][] dataS(String excelPath, String sheetName, int startRow, int endRow, int startCell, int endCell) {
+    public static Object[][] continuousDataS(String excelPath, String sheetName, int startRow, int endRow, int startCell, int endCell) {
         //String excelPath = "src/main/resources/TestCaseData/v1.xlsx";
         //准备一个二维数组存放数据
         Object[][] dataS = null;
@@ -52,7 +52,7 @@ public class ExcelUtil {
         return dataS;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Object[][] dataS = dataS("src/main/resources/TestCaseData/v1.xlsx", "Sheet1", 3,
                 5, 4, 5);
         for (Object[] objects : dataS) {
@@ -61,6 +61,50 @@ public class ExcelUtil {
             }
             System.out.println();
         }
+    }*/
+
+    /**
+     * 支持传入非连续的行和列
+     *
+     * @param excelPath 文件地址
+     * @param sheetName sheet名称
+     * @param rows      行号数组
+     * @param cells     列号数组
+     * @return 读取到的excel数据
+     */
+    public static Object[][] DiscreteDataS(String excelPath, String sheetName, int[] rows, int[] cells) {
+        //String excelPath = "src/main/resources/TestCaseData/v1.xlsx";
+        //准备一个二维数组存放数据
+        Object[][] dataS = null;
+        //获取文件路径
+        File file = new File(excelPath);
+        //获取workBook对象
+        try {
+            //创建工作簿
+            Workbook workbook = WorkbookFactory.create(file);
+            //获取sheet对象
+            Sheet sheet = workbook.getSheet(sheetName);
+            //定义保存数据的数组
+            dataS = new Object[rows.length][cells.length];
+            //获取行
+            for (int i = 0; i < rows.length; i++) {
+                //根据行索引取出一行
+                Row row = sheet.getRow(rows[i] - 1);
+                //获取列
+                for (int j = 0; j < cells.length; j++) {
+                    Cell cell = row.getCell(cells[j] - 1, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                    //把值转换成为字符串
+                    cell.setCellType(CellType.STRING);
+                    //获取单元格的值
+                    String cellValue = cell.getStringCellValue();
+                    dataS[i][j] = cellValue;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dataS;
     }
+
 
 }
