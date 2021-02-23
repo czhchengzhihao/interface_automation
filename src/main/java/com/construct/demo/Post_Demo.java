@@ -18,12 +18,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class Post_Demo {
+    private static Logger log = Logger.getLogger(Test.class);
     @Test
     public void test_1() throws UnsupportedEncodingException {
         //声名post方法，获取测试url
@@ -64,6 +66,7 @@ public class Post_Demo {
 
     @Test(description = "登录", dataProvider = "login", dataProviderClass = Read_Parameter.class)
     public void test_2(String account, String password) throws UnsupportedEncodingException {
+        log.info("账号："+account+";"+"密码："+password);
         //声名post方法，获取测试url
         HttpPost post = new HttpPost("http://www.lemonban.com/user/ajax/login");
         //声名client对象，来执行请求

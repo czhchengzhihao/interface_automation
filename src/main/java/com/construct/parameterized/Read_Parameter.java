@@ -7,6 +7,7 @@ public class Read_Parameter {
 
     @DataProvider(name = "login")
     public static Object[][] dataS() {
-        return ExcelUtil.dataS();
+        return ExcelUtil.dataS("src/main/resources/TestCaseData/v1.xlsx", "sheet1", 2,
+                7, 6, 7);
     }
 }
