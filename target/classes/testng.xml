@@ -10,11 +10,10 @@
                     <include name="test_1"/>
                     <include name="test_2"/>
 
-<!--        <include name="test1"/>
+            <!--<include name="test1"/>
             <include name="test2"/>
             <include name="test3"/>
-            <include name="test4"/>
--->
+            <include name="test4"/>-->
                 </methods>
             </class>
         </classes>
