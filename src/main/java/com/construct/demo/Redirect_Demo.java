@@ -31,13 +31,16 @@ public class Redirect_Demo {
             post.setEntity(urlEncodedFormEntity);
             try {
                 HttpResponse response = client.execute(post);
+                String s = EntityUtils.toString(response.getEntity());
+                System.out.println(s);
                 int code = response.getStatusLine().getStatusCode();
                 String newuri="";
                 if (code == 302) {
                     Header header = response.getFirstHeader("location");// 跳转的目标地址是在 HTTP-HEAD 中的
-                    System.out.println("head"+header);
+                    System.out.println("head:"+header);
                     newuri = header.getValue(); // 这就是跳转后的地址，再向这个地址发出新申请，以便得到跳转后的信息是啥。
                     System.out.println(newuri);
+
                     System.out.println(code);
                     post = new HttpPost(newuri);
                     response = client.execute(post);
