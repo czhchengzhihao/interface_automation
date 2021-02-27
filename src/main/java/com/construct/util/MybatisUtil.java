@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 //mybatis学习文档
+//https://mybatis.org/mybatis-3/zh/index.html
 public class MybatisUtil {
     private static SqlSessionFactory sqlSessionFactory;
 
