@@ -22,4 +22,16 @@ public class tester {
         Reporter.log("我自己的日志");
         throw new RuntimeException("我的异常");
     }
+    @Test
+    public void test5(){
+        Assert.assertEquals("aa","aa");
+    }
+    @Test
+    public void test6(){
+        Assert.assertEquals("aa","bb");
+    }
+    @Test
+    public void test7(){
+        Assert.assertEquals("dd","dd");
+    }
 }
