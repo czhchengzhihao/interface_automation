@@ -13,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class Post_Demo {
         //添加参数
         List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
         params.add(new BasicNameValuePair("account", "c17639617036"));
-        params.add(new BasicNameValuePair("password", "czh_980405"));
+        params.add(new BasicNameValuePair("password", "czh980405"));
        /* JSONObject jsonObject = new JSONObject();
         jsonObject.put("account", "c17639617036");
         jsonObject.put("password", "czh_980405");
@@ -49,6 +50,7 @@ public class Post_Demo {
             HttpResponse response = client.execute(post);
             //接收返回结果
             String result = EntityUtils.toString(response.getEntity());
+
             System.out.println(result);
             //将字符串结果转换为json,进行断言   这个为3层json
             JSONObject resultJson = new JSONObject(result);

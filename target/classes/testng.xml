@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 
-<suite name="æµ‹è¯•å¥—ä»¶">
+<suite name="²âÊÔÌ×¼þ">
 
-    <test name="æµ‹è¯•ç”¨ä¾‹">
+    <test name="²âÊÔÓÃÀý">
         <classes>
             <class name="com.construct.demo.tester">
                 <methods>
                     <!--<include name="test_1"/>
                     <include name="test_2"/>-->
 
-            <include name="test1"/>
-            <include name="test2"/>
-            <include name="test3"/>
-            <include name="test4"/>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                    <include name="test3"/>
+                    <include name="test4"/>
+                    <include name="test5"/>
+                    <include name="test6"/>
+                    <include name="test7"/>
                 </methods>
             </class>
         </classes>
